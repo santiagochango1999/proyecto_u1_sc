@@ -1,19 +1,17 @@
-package com.example.demo.herencia;
+package com.example.demo.SpringBoot;
 
 import java.time.LocalDateTime;
+import org.springframework.stereotype.Service;
 
-import com.example.demo.tradicional.CitaMedica;
-import com.example.demo.tradicional.Medico;
-import com.example.demo.tradicional.Paciente;
-
-public class CitaMedicaH {
+@Service
+public class CitaMedicaSB {
 	private String numero;
 	private LocalDateTime fechaCita;
 	private LocalDateTime fechaAgenda;
-	private MedicoH medico;
-	private PacienteH paciente;
+	private MedicoSB medico;
+	private PacienteSB paciente;
 	
-	public void agendar(String numero, LocalDateTime fechaCita,PacienteH  ph, MedicoH mh) {
+	public void agendar(String numero, LocalDateTime fechaCita,PacienteSB  ph, MedicoSB mh) {
 		
 		this.numero=numero;
 		this.fechaCita=fechaCita;
@@ -28,7 +26,7 @@ public class CitaMedicaH {
 		
 	}
 	
-	private void guardarCita(CitaMedicaH cita) {
+	private void guardarCita(CitaMedicaSB cita) {
 		//Insert en la base de datos, guardar la cita
 		System.out.println("se ha generado la citamedico");
 		System.out.println(cita);
@@ -65,19 +63,19 @@ public class CitaMedicaH {
 		this.fechaAgenda = fechaAgenda;
 	}
 
-	public MedicoH getMedico() {
+	public MedicoSB getMedico() {
 		return medico;
 	}
 
-	public void setMedico(MedicoH medico) {
+	public void setMedico(MedicoSB medico) {
 		this.medico = medico;
 	}
 
-	public PacienteH getPaciente() {
+	public PacienteSB getPaciente() {
 		return paciente;
 	}
 
-	public void setPaciente(PacienteH paciente) {
+	public void setPaciente(PacienteSB paciente) {
 		this.paciente = paciente;
 	}
 	
