@@ -20,6 +20,9 @@ public class ProyectoU1ScApplication implements CommandLineRunner{
 	private PacienteTerceraEdadSB pacientete;
 	
 	@Autowired
+	private PacienteCancerSB cancerSB;
+	
+	@Autowired
 	private CitaMedicaSB citaMedicaSB;
 	
 	@Autowired
@@ -40,7 +43,11 @@ public class ProyectoU1ScApplication implements CommandLineRunner{
 		
 		System.out.println(pacientete);
 		
-		citaMedicaSB.agendar("123123",  LocalDateTime.of(2022, 12,2,8,30), pacientete, medicSB);
+		this.cancerSB.setCedula("12344");
+		this.cancerSB.setNombre("Danhiell");
+		this.cancerSB.setTipo("C");
+		
+		citaMedicaSB.agendar("123123",  LocalDateTime.of(2022, 12,2,8,30), this.cancerSB, medicSB);
 
 
 	}
