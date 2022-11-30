@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,22 +12,15 @@ import com.example.demo.SpringBoot.CitaMedicaSB;
 import com.example.demo.SpringBoot.MedicoSB;
 import com.example.demo.SpringBoot.PacienteCancerSB;
 import com.example.demo.SpringBoot.PacienteTerceraEdadSB;
+import com.example.demo.banco.modelo.CuentaBancaria;
+import com.example.demo.banco.service.ICuentaBancariaService;
 import com.example.demo.herencia.PacienteCancerH;
 
 @SpringBootApplication
 public class ProyectoU1ScApplication implements CommandLineRunner{
 
 	@Autowired
-	private PacienteTerceraEdadSB pacientete;
-	
-	@Autowired
-	private PacienteCancerSB cancerSB;
-	
-	@Autowired
-	private CitaMedicaSB citaMedicaSB;
-	
-	@Autowired
-	private MedicoSB medicSB;
+	private ICuentaBancariaService bancariaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1ScApplication.class, args);
@@ -35,21 +29,19 @@ public class ProyectoU1ScApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("Spring BOOT");
-		this.pacientete.setCodIess("sdfasfdgfdfh");
-		this.pacientete.setNombre("Edison");
-		this.pacientete.setTipo("");
-		this.pacientete.setCedula("23123");
+		CuentaBancaria cuenta1=new CuentaBancaria();
+		cuenta1.setNumero("0001");
+		cuenta1.setTipo("A");
+		cuenta1.setTitular("Juan Perez");
+		cuenta1.setSaldo(new BigDecimal(100));
+		this.bancariaService.insertar(cuenta1);
 		
-		System.out.println(pacientete);
-		
-		this.cancerSB.setCedula("12344");
-		this.cancerSB.setNombre("Danhiell");
-		this.cancerSB.setTipo("C");
-		
-		citaMedicaSB.agendar("123123",  LocalDateTime.of(2022, 12,2,8,30), this.cancerSB, medicSB);
-
-
+		CuentaBancaria cuenta2=new CuentaBancaria();
+		cuenta2.setNumero("0002");
+		cuenta2.setTipo("A");
+		cuenta2.setTitular("Maria Sanchez");
+		cuenta2.setSaldo(new BigDecimal(150));
+		this.bancariaService.insertar(cuenta2);
 	}
 
 }

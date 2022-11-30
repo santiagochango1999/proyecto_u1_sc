@@ -1,5 +1,9 @@
 package com.example.demo.banco.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.banco.modelo.Transferencia;
@@ -7,6 +11,8 @@ import com.example.demo.banco.modelo.Transferencia;
 @Repository
 public class TransferenciaRepositoryImpl implements ITransferenciaRepository {
 
+	private static List<Transferencia> basedatos= new ArrayList<>();
+	
 	@Override
 	public Transferencia buscar(Integer id) {
 		// TODO Auto-generated method stub
@@ -22,7 +28,7 @@ public class TransferenciaRepositoryImpl implements ITransferenciaRepository {
 	@Override
 	public void insertar(Transferencia transferencia) {
 		// TODO Auto-generated method stub
-		
+		basedatos.add(transferencia);
 	}
 
 	@Override
@@ -30,5 +36,14 @@ public class TransferenciaRepositoryImpl implements ITransferenciaRepository {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public List<Transferencia> buscarTodos() {
+		// TODO Auto-generated method stub
+		
+		return basedatos;
+	}
+
+	
 
 }
