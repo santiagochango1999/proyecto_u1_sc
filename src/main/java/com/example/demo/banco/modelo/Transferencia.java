@@ -11,6 +11,11 @@ public class Transferencia {
 	private BigDecimal monto;
 	private String numero;
 	
+	@Override
+	public String toString() {
+		return "Transferencia [CuentaOrigen=" + CuentaOrigen + ", cuentaDestino=" + cuentaDestino + ", fecha=" + fecha
+				+ ", monto=" + monto + ", numero=" + numero + "]";
+	}
 	//METODOS GET Y SET
 	public String getCuentaOrigen() {
 		return CuentaOrigen;

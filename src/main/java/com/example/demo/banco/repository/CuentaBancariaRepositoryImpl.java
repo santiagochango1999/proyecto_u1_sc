@@ -31,21 +31,32 @@ public class CuentaBancariaRepositoryImpl implements ICuentaBancariaRepository{
 			}
 		}
 		System.out.println("se busca la cuenta: "+cuenta);
-		return null;
+		return cuenta;
 	}
 
 	@Override
 	public CuentaBancaria buscar(Integer id) {
 		// TODO Auto-generated method stub
 		System.out.println("se busca la cuenta: "+id);
+		
+		
+		
 		return null;
 	}
 
 	@Override
 	public void actualizar(CuentaBancaria cuentaBancaria) {
-		// TODO Auto-generated method stub
-		System.out.println("se actualiza la cuenta: "+cuentaBancaria);
 		
+		CuentaBancaria cuenta = null;
+//		
+		for(CuentaBancaria cb: baseCuentas) {
+			if(cb.getNumero().equals(cuentaBancaria.getNumero())){
+				cuenta=cb;
+			}
+		}
+		baseCuentas.remove(cuenta);
+		baseCuentas.add(cuentaBancaria);
+		System.out.println("se busca la cuenta: "+cuentaBancaria);
 	}
 
 	@Override
