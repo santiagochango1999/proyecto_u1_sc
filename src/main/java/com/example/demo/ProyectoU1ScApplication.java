@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,6 +19,7 @@ import com.example.demo.banco.service.ICuentaBancariaService;
 import com.example.demo.banco.service.ITransferenciaService;
 import com.example.demo.ejercicio1.modelo.Propietario;
 import com.example.demo.ejercicio1.modelo.Vehiculo;
+import com.example.demo.ejercicio1.service.IMatriculaNuevaService;
 import com.example.demo.ejercicio1.service.IMatriculaService;
 import com.example.demo.ejercicio1.service.IPropietarioService;
 import com.example.demo.ejercicio1.service.IVehiculoService;
@@ -33,7 +35,12 @@ public class ProyectoU1ScApplication implements CommandLineRunner{
 	private IPropietarioService iPropietarioService;
 	
 	@Autowired
-	private IMatriculaService iMatriculaService;
+	@Qualifier("pesado")
+	private IMatriculaNuevaService iMatriculaService;
+	
+	@Autowired
+	@Qualifier("liviano")
+	private IMatriculaNuevaService iMatriculaServiceliviano;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1ScApplication.class, args);
@@ -47,7 +54,7 @@ public class ProyectoU1ScApplication implements CommandLineRunner{
 		vehi.setMarca("toyota");
 		vehi.setPlaca("pds");
 		vehi.setPrecio(new BigDecimal(20000));
-		vehi.setTipo("p");
+		vehi.setTipo("l");
 		
 		this.iVehiculoService.crear(vehi);
 		
@@ -64,7 +71,8 @@ public class ProyectoU1ScApplication implements CommandLineRunner{
 		
 		this.iPropietarioService.guardar(propietario);
 		
-		this.iMatriculaService.matricular("12147552", "pds");
+		
+		
 		
 //		CuentaBancaria cuenta1=new CuentaBancaria();
 //		cuenta1.setNumero("0001");

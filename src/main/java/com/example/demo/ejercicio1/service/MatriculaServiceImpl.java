@@ -37,6 +37,7 @@ public class MatriculaServiceImpl implements IMatriculaService{
 		if(vehiculo.getTipo().equals("p")) {
 			valor=vehiculo.getPrecio().multiply(new BigDecimal(0.15));
 		}else {
+			//liviano
 			valor=vehiculo.getPrecio().multiply(new BigDecimal(0.10));
 
 		}
