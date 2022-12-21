@@ -19,6 +19,7 @@ import com.example.demo.banco.service.ICuentaBancariaService;
 import com.example.demo.banco.service.ITransferenciaService;
 import com.example.demo.ejercicio1.modelo.Propietario;
 import com.example.demo.ejercicio1.modelo.Vehiculo;
+import com.example.demo.ejercicio1.service.IGestorMatriculaService;
 import com.example.demo.ejercicio1.service.IMatriculaNuevaService;
 import com.example.demo.ejercicio1.service.IMatriculaService;
 import com.example.demo.ejercicio1.service.IPropietarioService;
@@ -35,12 +36,8 @@ public class ProyectoU1ScApplication implements CommandLineRunner{
 	private IPropietarioService iPropietarioService;
 	
 	@Autowired
-	@Qualifier("pesado")
-	private IMatriculaNuevaService iMatriculaService;
+	private IGestorMatriculaService iGestorMatriculaService;
 	
-	@Autowired
-	@Qualifier("liviano")
-	private IMatriculaNuevaService iMatriculaServiceliviano;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1ScApplication.class, args);
@@ -70,7 +67,9 @@ public class ProyectoU1ScApplication implements CommandLineRunner{
 		propietario.setNombre("Edison");
 		
 		this.iPropietarioService.guardar(propietario);
-		
+	
+		//opcion3
+		this.iGestorMatriculaService.matricular("12147552", "pds");
 		
 		
 		
